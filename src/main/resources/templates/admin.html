@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <a href="/car/add/">Add New Car</a>
+    <br>
+    <a href="/car/admin/">Edit/Delete</a>
+    <br>
+    <a href="/car/new-purchase/">Purchase</a>
+    <br>
+    <a href="/car/addnewbrand/">Add new Brand</a>
+</div>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Car ID</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car : ${listCars}">
+            <td th:text="${car.id}">Car ID</td>
+            <td th:text="${car.name}">Name</td>
+            <td th:text="${car.brand.name}">Brand</td>
+            <td th:text="${car.price}">price</td>
+
+            <td>
+
+                <a  th:href="@{/car/edit/(id=${car.id})}">Edit</a>
+
+                &nbsp;&nbsp;&nbsp;
+
+                <a  th:href="@{/car/delete/(id=${car.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <a href="/car/add/">Add New Car</a>
+    <br>
+    <a href="/car/admin/">Edit/Delete</a>
+    <br>
+    <a href="/car/new-purchase/">Purchase</a>
+    <br>
+    <a href="/car/addnewbrand/">Add new Brand</a>
+</div>
+<form action="/car/addnewbrand" method="POST" enctype="multipart/form-data">
+
+<p>
+    <label for="name">brand Name</label>
+    <input type="text" id="name" name="name" required>
+</p>
+<p>
+    <input type="submit" value="submit">
+    <input type="reset" value="reset">
+</p>
+
+</form>
+</body>
+</html>

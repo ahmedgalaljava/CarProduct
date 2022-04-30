@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <a href="/car/add/">Add New Car</a>
+    <br>
+    <a href="/car/admin/">Edit/Delete</a>
+    <br>
+    <a href="/car/new-purchase/">Purchase</a>
+    <br>
+    <a href="/car/addnewbrand/">Add new Brand</a>
+</div>
+<form action="/car/add" method="POST" enctype="multipart/form-data">
+
+<p>
+    <label for="name">Car Name</label>
+    <input type="text" id="name" name="name" required>
+</p>
+
+    <p>
+    <label for="price">price</label>
+
+    <input type="number" id="price" name="price" required>
+    </p>
+    <p>
+    <label>Brands :</label>
+    <select name="brand" id="">
+        <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}"></option>
+    </select>
+    </p>
+    <label>Photo :</label>
+
+        <label class="form-lable">Photos :</label>
+        <input type="text" id="imageURL" name="imageURL" required>
+
+
+    <p>
+    <input type="submit" value="submit">
+    <input type="reset" value="reset">
+</p>
+
+</form>
+</body>
+</html>
