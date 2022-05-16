@@ -1,25 +1,25 @@
 package com.product.car;
 
-import com.product.car.controller.AppController;
 import com.product.car.dao.CarRepository;
-import com.product.car.entities.Brand;
-import com.product.car.entities.Car;
+import com.product.car.service.ServiceCar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
 @SpringBootApplication
+@EnableAutoConfiguration(exclude = {org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration.class})
 @ComponentScan({"com.product.car"})
 public class DemoApplication {
+	@Autowired
+	ServiceCar serviceCar;
 	private static final Logger log = LoggerFactory.getLogger(DemoApplication.class);
 
 	public static void main(String[] args) {
@@ -27,19 +27,8 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner demo(CarRepository repository) {
-		return (args) -> {
 
-		List <Car> carListByName=repository.findByNameOrderByPriceDesc("car2");
-		for (Car car : carListByName) {
 
-			System.out.println(car.getPrice());
 
-		}
-
-		};
-
-	}
 
 }

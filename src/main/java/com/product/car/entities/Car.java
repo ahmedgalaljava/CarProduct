@@ -1,10 +1,15 @@
 package com.product.car.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.data.jpa.repository.Query;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-public class Car {
+public class Car implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,7 +21,9 @@ public class Car {
     public Brand getBrand() {
         return brand;
     }
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL
+    )
+    @JsonIgnore
     private Brand brand;
 
     public void setBrand(Brand brand) {

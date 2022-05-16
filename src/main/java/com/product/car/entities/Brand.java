@@ -1,5 +1,7 @@
 package com.product.car.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +23,7 @@ public class Brand {
 
     @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Car> cars ;
 
 
