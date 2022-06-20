@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class DemoApplicationTests {
 
 
-	@Test
+
 	public  void getAllCarNotNull(){
 		System.out.println("getAllCarNotNull Test");
 		String allCars="http://localhost:8080/CarApp/all";
@@ -46,10 +46,11 @@ class DemoApplicationTests {
 
 	}
 
-	@Test
+
+
 	public  void getAddNewCar(){
 		System.out.println("getAllCarNotNull Test");
-		String addNewCar="http://localhost:8080/CarApp/car/add";
+		String addNewCar="http://localhost:8081/CarApp/car/add";
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);

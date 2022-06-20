@@ -2,6 +2,8 @@ package com.product.car.controller;
 
 import com.product.car.entities.Car;
 import com.product.car.service.ServiceCar;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,7 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 @RestController
 @RequestMapping(("/CarApp"))
 public class CarRestController {
+    Logger logger = LoggerFactory.getLogger(CarRestController.class);
     @Autowired
     ServiceCar serviceCar;
 
@@ -40,9 +43,24 @@ public class CarRestController {
 
     @GetMapping("/car/brand/{id}")
     public Car findByBrandId (@PathVariable Long brandId) {
-        List<Long> brands= new ArrayList<Long>();
-        brands.add(brandId);
+
+            logger.info("findByBrandId");
+            List<Long> brands = new ArrayList<Long>();
+            brands.add(brandId);
+            logger.info("bran added ");
+
        return serviceCar.findByBrandIds(brands).get(0);
+    }
+
+    @GetMapping("/")
+    public String index () {
+        logger.trace("A TRACE Message");
+        logger.debug("A DEBUG Message");
+        logger.info("An INFO Message");
+        logger.warn("A WARN Message");
+        logger.error("An ERROR Message");
+
+        return "Howdy! Check out the Logs to see the output...";
     }
 
 }
